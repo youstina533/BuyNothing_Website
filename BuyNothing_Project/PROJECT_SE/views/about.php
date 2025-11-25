@@ -1,0 +1,500 @@
+ <?php
+define('ROOT_PATH', __DIR__ . '/../');
+session_start();
+if (isset($_GET['logout'])) {
+    require_once ROOT_PATH . 'controllers/LogoutController.php';
+    (new LogoutController())->logout();
+}
+if (isset($_POST['action'])) {
+    switch ($_POST['action']) {
+        case 'register':
+            require_once ROOT_PATH . 'controllers/UserController.php';
+            (new UserController())->register($_POST['username'], $_POST['email'], $_POST['password']);
+            break;
+        case 'login':
+            require_once ROOT_PATH . 'controllers/UserController.php';
+            (new UserController())->login($_POST['email'], $_POST['password']);
+            break;
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Buy Nothing</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.php"> 
+                <span class="ms-2 fw-bold text-primary">Buy Nothing</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.php">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rules.php">Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="customer-service.php">Help</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <div class="dropdown me-2">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-globe"></i> English
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item active" href="#">English</a></li>
+                            <li><a class="dropdown-item" href="#">العربية</a></li>
+                            <li><a class="dropdown-item" href="#">Español</a></li>
+                            <li><a class="dropdown-item" href="#">Français</a></li>
+                        </ul>
+                    </div>
+                    <!-- User dropdown for logged in users -->
+                    <div class="dropdown d-none" id="user-dropdown">
+                        <button class="btn btn-link p-0 text-dark dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Profile Picture">
+                            <span class="d-none d-md-inline" id="username-display">User</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href=".php"><i class="fas fa-user me-2"></i> My Profile</a></li>
+                            <li><a class="dropdown-item" href="settings.php"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logout-btn"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                    <!-- Login/Register buttons for guests -->
+                    <div id="auth-buttons">
+                        <a href="login.php" class="btn btn-outline-primary me-2">Login</a>
+                        <a href="register.php" class="btn btn-primary">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1 class="display-4 fw-bold mb-3">Our Story</h1>
+                    <p class="lead mb-4">The Buy Nothing Project started with a simple idea: what if we could build community by giving freely to our neighbors?</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://via.placeholder.com/600x400" alt="Community Sharing" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="mb-4">Our Mission</h2>
+                    <p class="lead mb-4">The Buy Nothing Project's mission is to build community by connecting people through hyperlocal gifting, and reducing our impact on the environment.</p>
+                    <div class="row g-4 mt-3">
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body text-center p-4">
+                                    <div class="feature-icon bg-primary bg-opacity-10 text-primary mx-auto mb-4">
+                                        <i class="fas fa-hands-helping fa-2x"></i>
+                                    </div>
+                                    <h4>Build Community</h4>
+                                    <p class="text-muted">Creating meaningful connections between neighbors through sharing and giving.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body text-center p-4">
+                                    <div class="feature-icon bg-primary bg-opacity-10 text-primary mx-auto mb-4">
+                                        <i class="fas fa-recycle fa-2x"></i>
+                                    </div>
+                                    <h4>Reduce Waste</h4>
+                                    <p class="text-muted">Keeping usable items out of landfills by giving them a second life.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body text-center p-4">
+                                    <div class="feature-icon bg-primary bg-opacity-10 text-primary mx-auto mb-4">
+                                        <i class="fas fa-gift fa-2x"></i>
+                                    </div>
+                                    <h4>Gift Economy</h4>
+                                    <p class="text-muted">Promoting a culture of giving without expectation of return.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://via.placeholder.com/600x400" alt="History" class="img-fluid rounded-3 shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Our History</h2>
+                    <p class="mb-3">The Buy Nothing Project began in 2013 when two friends, Rebecca Rockefeller and Liesl Clark, created the first Buy Nothing group on Bainbridge Island, Washington. They wanted to create a way for neighbors to give and receive freely, outside the cash economy.</p>
+                    <p class="mb-3">What started as a small experiment quickly grew into a global movement. Today, the Buy Nothing Project has millions of members in thousands of groups across the globe.</p>
+                    <p>Our platform is the next evolution of this movement, bringing the Buy Nothing ethos to an online platform that makes it even easier for neighbors to connect, share, and build community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="mb-5">Our Impact</h2>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="impact-stat">
+                        <h2 class="display-4 fw-bold text-primary mb-2" id="memberCount">5.2M+</h2>
+                        <p class="lead">Community Members</p>
+                        <p class="text-muted">Neighbors connecting and sharing across the globe</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="impact-stat">
+                        <h2 class="display-4 fw-bold text-primary mb-2" id="itemCount">12.8M+</h2>
+                        <p class="lead">Items Gifted</p>
+                        <p class="text-muted">Items kept out of landfills and given new life</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="impact-stat">
+                        <h2 class="display-4 fw-bold text-primary mb-2" id="groupCount">7.5K+</h2>
+                        <p class="lead">Local Groups</p>
+                        <p class="text-muted">Communities building stronger connections</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="mb-5">Meet Our Team</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <!-- Team Member 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="https://via.placeholder.com/300x300" class="card-img-top" alt="Team Member">
+                        <div class="card-body text-center">
+                            <h5 class="card-title mb-1">Sarah Johnson</h5>
+                            <p class="text-muted mb-3">Founder & CEO</p>
+                            <p class="card-text">Sarah has been passionate about community building and sustainability for over 15 years.</p>
+                            <div class="social-icons">
+                                <a href="#" class="text-primary me-2"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-primary me-2"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-primary"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="https://via.placeholder.com/300x300" class="card-img-top" alt="Team Member">
+                        <div class="card-body text-center">
+                            <h5 class="card-title mb-1">Ahmed Hassan</h5>
+                            <p class="text-muted mb-3">CTO</p>
+                            <p class="card-text">Ahmed brings 10 years of tech experience to help build our platform and reach more communities.</p>
+                            <div class="social-icons">
+                                <a href="#" class="text-primary me-2"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-primary me-2"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-primary"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="https://via.placeholder.com/300x300" class="card-img-top" alt="Team Member">
+                        <div class="card-body text-center">
+                            <h5 class="card-title mb-1">Maria Rodriguez</h5>
+                            <p class="text-muted mb-3">Community Director</p>
+                            <p class="card-text">Maria oversees our global network of volunteers and community leaders.</p>
+                            <div class="social-icons">
+                                <a href="#" class="text-primary me-2"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-primary me-2"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-primary"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="https://via.placeholder.com/300x300" class="card-img-top" alt="Team Member">
+                        <div class="card-body text-center">
+                            <h5 class="card-title mb-1">David Kim</h5>
+                            <p class="text-muted mb-3">Head of Operations</p>
+                            <p class="card-text">David ensures our platform runs smoothly and our community's needs are met.</p>
+                            <div class="social-icons">
+                                <a href="#" class="text-primary me-2"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-primary me-2"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-primary"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="mb-5">Our Core Values</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="d-flex mb-4">
+                        <div class="feature-icon bg-primary bg-opacity-10 text-primary me-3">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div>
+                            <h4>Generosity</h4>
+                            <p>We believe in the power of giving freely without expectation of return, creating a culture of abundance rather than scarcity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex mb-4">
+                        <div class="feature-icon bg-primary bg-opacity-10 text-primary me-3">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h4>Community</h4>
+                            <p>We're committed to building stronger, more connected neighborhoods where people know and support each other.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex mb-4">
+                        <div class="feature-icon bg-primary bg-opacity-10 text-primary me-3">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div>
+                            <h4>Sustainability</h4>
+                            <p>We're dedicated to reducing waste and our environmental impact by keeping usable items in circulation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex mb-4">
+                        <div class="feature-icon bg-primary bg-opacity-10 text-primary me-3">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div>
+                            <h4>Respect</h4>
+                            <p>We treat all community members with dignity and respect, valuing diversity and inclusion in all our groups.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex mb-4">
+                        <div class="feature-icon bg-primary bg-opacity-10 text-primary me-3">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <h4>Local Focus</h4>
+                            <p>We believe in the power of hyperlocal connections, bringing neighbors together to share resources.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex mb-4">
+                        <div class="feature-icon bg-primary bg-opacity-10 text-primary me-3">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h4>Innovation</h4>
+                            <p>We're constantly evolving and improving how we connect communities and facilitate sharing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="mb-5">What People Are Saying</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://via.placeholder.com/60" class="rounded-circle me-3" alt="User">
+                                <div>
+                                    <h5 class="mb-0">Emma Wilson</h5>
+                                    <p class="text-muted mb-0">London, UK</p>
+                                </div>
+                            </div>
+                            <p class="mb-0">"The Buy Nothing community has completely changed how I think about consumption. I've met amazing neighbors, reduced my waste, and found so many treasures that others no longer needed."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://via.placeholder.com/60" class="rounded-circle me-3" alt="User">
+                                <div>
+                                    <h5 class="mb-0">Mohammed Ali</h5>
+                                    <p class="text-muted mb-0">Cairo, Egypt</p>
+                                </div>
+                            </div>
+                            <p class="mb-0">"I joined Buy Nothing to declutter my home, but I found so much more. The sense of community and connection with my neighbors has been the greatest gift of all."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://via.placeholder.com/60" class="rounded-circle me-3" alt="User">
+                                <div>
+                                    <h5 class="mb-0">Sophia Chen</h5>
+                                    <p class="text-muted mb-0">San Francisco, USA</p>
+                                </div>
+                            </div>
+                            <p class="mb-0">"As a new parent, Buy Nothing has been a lifesaver. I've received baby clothes, toys, and even a stroller - all for free. Now I'm giving back by passing along items as my child outgrows them."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="mb-4">Join Our Movement</h2>
+            <p class="lead mb-4">Become part of the Buy Nothing community and help us build a more sustainable, connected world.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a href="register.php" class="btn btn-light btn-lg px-4">Join Now</a>
+                        <a href="volunteer.php" class="btn btn-outline-light btn-lg px-4">Volunteer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Buy Nothing</h5>
+                    <p class="mb-3">A global movement where people give and receive freely, reducing waste and building community.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="../index.php" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="about.php" class="text-white text-decoration-none">About Us</a></li>
+                     
+                        <li class="mb-2"><a href="rules.php" class="text-white text-decoration-none">Rules</a></li>
+                        <li><a href="customer-service.php" class="text-white text-decoration-none">Help</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5 class="mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                        <li class="mb-2"><a href="volunteer.php" class="text-white text-decoration-none">Volunteer</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Community Events</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Local Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-3">Stay Connected</h5>
+                    <p>Subscribe to our newsletter for updates and news.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email" aria-label="Your email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                    <p class="mb-0"><i class="fas fa-phone me-2"></i> Customer Service: +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope me-2"></i> support@buynothing.org</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2023 Buy Nothing Project. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none me-3">Terms of Service</a>
+                    <a href="#" class="text-white text-decoration-none">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
