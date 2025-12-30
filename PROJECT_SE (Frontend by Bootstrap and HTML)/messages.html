@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Buy Nothing</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .chat-container {
+            height: calc(100vh - 200px);
+            min-height: 500px;
+        }
+        .chat-sidebar {
+            height: 100%;
+            overflow-y: auto;
+            border-right: 1px solid #dee2e6;
+        }
+        .chat-messages {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .message-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        .message-input {
+            border-top: 1px solid #dee2e6;
+            padding: 1rem;
+            background-color: #f8f9fa;
+        }
+        .chat-item {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .chat-item:hover, .chat-item.active {
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+        .message-bubble {
+            max-width: 75%;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .message-sent {
+            background-color: #0d6efd;
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 0.25rem;
+        }
+        .message-received {
+            background-color: #f0f2f5;
+            color: #212529;
+            margin-right: auto;
+            border-bottom-left-radius: 0.25rem;
+        }
+        .message-time {
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            opacity: 0.8;
+        }
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 3px;
+            animation: typing 1s infinite;
+        }
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes typing {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">
+                <img src="images/logo.png" alt="Buy Nothing Logo" height="40">
+                <span class="ms-2 fw-bold text-primary">Buy Nothing</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="groups.html">My Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="messages.html">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="saved-posts.html">Saved</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rules.html">Rules</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown me-3">
+                        <button class="btn btn-link text-dark position-relative p-0" type="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bell fa-lg"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown" style="width: 300px;">
+                            <li><h6 class="dropdown-header">Notifications</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center py-2" href="#">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <p class="mb-0"><strong>Sarah</strong> commented on your post</p>
+                                        <small class="text-muted">2 hours ago</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center py-2" href="#">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <p class="mb-0"><strong>Ahmed</strong> is interested in your item</p>
+                                        <small class="text-muted">5 hours ago</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center py-2" href="#">
+                                    <div class="bg-primary text-white rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <p class="mb-0">You were added to <strong>Downtown Group</strong></p>
+                                        <small class="text-muted">1 day ago</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-center" href="#">See all notifications</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-link p-0 text-dark dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Profile Picture">
+                            <span class="d-none d-md-inline">John Doe</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> My Profile</a></li>
+                            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages Section -->
+    <div class="container py-4">
+        <div class="row mb-4">
+            <div class="col">
+                <h2 class="mb-0">Messages</h2>
+                <p class="text-muted">Connect with your neighbors about items and services</p>
+            </div>
+        </div>
+        
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-0">
+                <div class="row g-0 chat-container">
+                    <!-- Chat Sidebar -->
+                    <div class="col-md-4 col-lg-3 chat-sidebar">
+                        <div class="p-3 border-bottom">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search messages..." aria-label="Search messages">
+                                <button class="btn btn-outline-secondary" type="button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="list-group list-group-flush">
+                            <!-- Chat 1 -->
+                            <div class="list-group-item chat-item active p-3" data-chat-id="1">
+                                <div class="d-flex align-items-center">
+                                    <div class="position-relative">
+                                        <img src="https://via.placeholder.com/50" class="rounded-circle" alt="Sarah Ahmed">
+                                        <span class="position-absolute bottom-0 end-0 bg-success rounded-circle p-1" style="width: 12px; height: 12px;"></span>
+                                    </div>
+                                    <div class="ms-3 flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-0">Sarah Ahmed</h6>
+                                            <small class="text-muted">2m</small>
+                                        </div>
+                                        <p class="mb-0 text-truncate" style="max-width: 200px;">
+                                            <small>I'm interested in the kitchen blender you posted...</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Chat 2 -->
+                            <div class="list-group-item chat-item p-3" data-chat-id="2">
+                                <div class="d-flex align-items-center">
+                                    <div class="position-relative">
+                                        <img src="https://via.placeholder.com/50" class="rounded-circle" alt="Mohamed Hassan">
+                                        <span class="position-absolute bottom-0 end-0 bg-secondary rounded-circle p-1" style="width: 12px; height: 12px;"></span>
+                                    </div>
+                                    <div class="ms-3 flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-0">Mohamed Hassan</h6>
+                                            <small class="text-muted">1h</small>
+                                        </div>
+                                        <p class="mb-0 text-truncate" style="max-width: 200px;">
+                                            <small>Thank you for the books! My kids love them.</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Chat 3 -->
+                            <div class="list-group-item chat-item p-3" data-chat-id="3">
+                                <div class="d-flex align-items-center">
+                                    <div class="position-relative">
+                                        <img src="https://via.placeholder.com/50" class="rounded-circle" alt="Fatima Khalid">
+                                    </div>
+                                    <div class="ms-3 flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-0">Fatima Khalid</h6>
+                                            <small class="text-muted">2d</small>
+                                        </div>
+                                        <p class="mb-0 text-truncate" style="max-width: 200px;">
+                                            <small>Is the camping equipment still available for lending?</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Chat 4 -->
+                            <div class="list-group-item chat-item p-3" data-chat-id="4">
+                                <div class="d-flex align-items-center">
+                                    <div class="position-relative">
+                                        <img src="https://via.placeholder.com/50" class="rounded-circle" alt="Ahmed Ibrahim">
+                                    </div>
+                                    <div class="ms-3 flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-0">Ahmed Ibrahim</h6>
+                                            <small class="text-muted">3d</small>
+                                        </div>
+                                        <p class="mb-0 text-truncate" style="max-width: 200px;">
+                                            <small>I can help you with your garden next weekend if you still need it.</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Chat 5 -->
+                            <div class="list-group-item chat-item p-3" data-chat-id="5">
+                                <div class="d-flex align-items-center">
+                                    <div class="position-relative">
+                                        <img src="https://via.placeholder.com/50" class="rounded-circle" alt="Layla Mahmoud">
+                                        <span class="position-absolute bottom-0 end-0 bg-success rounded-circle p-1" style="width: 12px; height: 12px;"></span>
+                                    </div>
+                                    <div class="ms-3 flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-0">Layla Mahmoud</h6>
+                                            <small class="text-muted">5d</small>
+                                        </div>
+                                        <p class="mb-0 text-truncate" style="max-width: 200px;">
+                                            <small>The furniture has been picked up. Thank you!</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chat Messages -->
+                    <div class="col-md-8 col-lg-9 chat-messages">
+                        <!-- Chat Header -->
+                        <div class="p-3 border-bottom">
+                            <div class="d-flex align-items-center">
+                                <div class="position-relative">
+                                    <img src="https://via.placeholder.com/50" class="rounded-circle" alt="Sarah Ahmed">
+                                    <span class="position-absolute bottom-0 end-0 bg-success rounded-circle p-1" style="width: 12px; height: 12px;"></span>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="mb-0">Sarah Ahmed</h5>
+                                    <small class="text-muted">Online</small>
+                                </div>
+                                <div class="ms-auto">
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-dark" type="button" id="chatOptionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="chatOptionsDropdown">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> View Profile</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-bell-slash me-2"></i> Mute Notifications</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i> Report</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash-alt me-2"></i> Delete Conversation</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Message List -->
+                        <div class="message-list">
+                            <!-- Day Separator -->
+                            <div class="text-center mb-3">
+                                <span class="badge bg-light text-dark">Today</span>
+                            </div>
+                            
+                            <!-- Received Message -->
+                            <div class="message-bubble message-received">
+                                <p class="mb-0">Hi John! I saw your post about the kitchen blender. Is it still available?</p>
+                                <div class="message-time text-end">10:15 AM</div>
+                            </div>
+                            
+                            <!-- Sent Message -->
+                            <div class="message-bubble message-sent">
+                                <p class="mb-0">Hi Sarah! Yes, the blender is still available. It's only 6 months old and works perfectly.</p>
+                                <div class="message-time text-end">10:17 AM</div>
+                            </div>
+                            
+                            <!-- Received Message -->
+                            <div class="message-bubble message-received">
+                                <p class="mb-0">That's great! I've been looking for a good blender for smoothies. When would be a good time to pick it up?</p>
+                                <div class="message-time text-end">10:20 AM</div>
+                            </div>
+                            
+                            <!-- Sent Message -->
+                            <div class="message-bubble message-sent">
+                                <p class="mb-0">I'm available most evenings after 6pm, or this weekend. What works best for you?</p>
+                                <div class="message-time text-end">10:22 AM</div>
+                            </div>
+                            
+                            <!-- Received Message -->
+                            <div class="message-bubble message-received">
+                                <p class="mb-0">This weekend would be perfect! How about Saturday around 2pm? And where should I meet you?</p>
+                                <div class="message-time text-end">10:25 AM</div>
+                            </div>
+                            
+                            <!-- Sent Message -->
+                            <div class="message-bubble message-sent">
+                                <p class="mb-0">Saturday at 2pm works great. We can meet at the Downtown Cairo community center. It's a public place and easy to find.</p>
+                                <div class="message-time text-end">10:28 AM</div>
+                            </div>
+                            
+                            <!-- Received Message -->
+                            <div class="message-bubble message-received">
+                                <p class="mb-0">Perfect! I know where that is. Thank you so much for giving this away. I really appreciate it!</p>
+                                <div class="message-time text-end">10:30 AM</div>
+                            </div>
+                            
+                            <!-- Sent Message -->
+                            <div class="message-bubble message-sent">
+                                <p class="mb-0">You're welcome! I'm happy it's going to someone who will use it. See you on Saturday!</p>
+                                <div class="message-time text-end">10:32 AM</div>
+                            </div>
+                            
+                            <!-- Typing Indicator -->
+                            <div class="typing-indicator message-received">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Message Input -->
+                        <div class="message-input">
+                            <form id="messageForm">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <i class="fas fa-paperclip"></i>
+                                    </button>
+                                    <input type="text" class="form-control" placeholder="Type a message..." aria-label="Type a message">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Buy Nothing</h5>
+                    <p class="mb-3">A global movement where people give and receive freely, reducing waste and building community.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="dashboard.html" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="groups.html" class="text-white text-decoration-none">My Groups</a></li>
+                        <li class="mb-2"><a href="messages.html" class="text-white text-decoration-none">Messages</a></li>
+                        <li class="mb-2"><a href="saved-posts.html" class="text-white text-decoration-none">Saved Posts</a></li>
+                        <li><a href="rules.html" class="text-white text-decoration-none">Rules</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5 class="mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                        <li class="mb-2"><a href="volunteer.html" class="text-white text-decoration-none">Volunteer</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Community Events</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Local Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-3">Stay Connected</h5>
+                    <p>Subscribe to our newsletter for updates and news.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email" aria-label="Your email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                    <p class="mb-0"><i class="fas fa-phone me-2"></i> Customer Service: +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope me-2"></i> support@buynothing.org</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2023 Buy Nothing Project. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none me-3">Terms of Service</a>
+                    <a href="#" class="text-white text-decoration-none">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chat item selection
+            const chatItems = document.querySelectorAll('.chat-item');
+            
+            chatItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all items
+                    chatItems.forEach(i => i.classList.remove('active'));
+                    
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    
+                    // In a real app, you would load the chat history here
+                    const chatId = this.getAttribute('data-chat-id');
+                    console.log(`Loading chat ${chatId}`);
+                    
+                    // For demo purposes, we'll just show a loading message
+                    if (chatId !== "1") {
+                        document.querySelector('.message-list').innerHTML = `
+                            <div class="text-center py-5">
+                                <div class="spinner-border text-primary mb-3" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p>Loading conversation...</p>
+                            </div>
+                        `;
+                    }
+                });
+            });
+            
+            // Message form submission
+            const messageForm = document.getElementById('messageForm');
+            
+            messageForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const messageInput = this.querySelector('input');
+                const message = messageInput.value.trim();
+                
+                if (message) {
+                    // Add message to the chat
+                    const messageList = document.querySelector('.message-list');
+                    const now = new Date();
+                    const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    
+                    const messageHTML = `
+                        <div class="message-bubble message-sent">
+                            <p class="mb-0">${message}</p>
+                            <div class="message-time text-end">${timeString}</div>
+                        </div>
+                    `;
+                    
+                    // Remove typing indicator if present
+                    const typingIndicator = messageList.querySelector('.typing-indicator');
+                    if (typingIndicator) {
+                        typingIndicator.remove();
+                    }
+                    
+                    // Append message
+                    messageList.insertAdjacentHTML('beforeend', messageHTML);
+                    
+                    // Clear input
+                    messageInput.value = '';
+                    
+                    // Scroll to bottom
+                    messageList.scrollTop = messageList.scrollHeight;
+                    
+                    // Simulate reply after a delay
+                    setTimeout(() => {
+                        // Add typing indicator
+                        const typingHTML = `
+                            <div class="typing-indicator message-received">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        `;
+                        messageList.insertAdjacentHTML('beforeend', typingHTML);
+                        messageList.scrollTop = messageList.scrollHeight;
+                        
+                        // Remove typing indicator and add reply after a delay
+                        setTimeout(() => {
+                            const typingIndicator = messageList.querySelector('.typing-indicator');
+                            if (typingIndicator) {
+                                typingIndicator.remove();
+                            }
+                            
+                            const replyHTML = `
+                                <div class="message-bubble message-received">
+                                    <p class="mb-0">Thanks for your message! I'll get back to you soon.</p>
+                                    <div class="message-time text-end">${timeString}</div>
+                                </div>
+                            `;
+                            messageList.insertAdjacentHTML('beforeend', replyHTML);
+                            messageList.scrollTop = messageList.scrollHeight;
+                        }, 2000);
+                    }, 1000);
+                }
+            });
+            
+            // Scroll message list to bottom on load
+            const messageList = document.querySelector('.message-list');
+            messageList.scrollTop = messageList.scrollHeight;
+        });
+    </script>
+</body>
+</html>

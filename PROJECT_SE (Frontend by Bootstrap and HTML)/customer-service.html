@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support - Buy Nothing</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Buy Nothing Logo" height="40">
+                <span class="ms-2 fw-bold text-primary">Buy Nothing</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="groups.html">Find Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rules.html">Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="customer-service.html">Help</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <div class="dropdown me-2">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-globe"></i> English
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item active" href="#">English</a></li>
+                            <li><a class="dropdown-item" href="#">العربية</a></li>
+                            <li><a class="dropdown-item" href="#">Español</a></li>
+                            <li><a class="dropdown-item" href="#">Français</a></li>
+                        </ul>
+                    </div>
+                    <!-- User dropdown for logged in users -->
+                    <div class="dropdown d-none" id="user-dropdown">
+                        <button class="btn btn-link p-0 text-dark dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Profile Picture">
+                            <span class="d-none d-md-inline" id="username-display">User</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> My Profile</a></li>
+                            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logout-btn"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                    <!-- Login/Register buttons for guests -->
+                    <div id="auth-buttons">
+                        <a href="login.html" class="btn btn-outline-primary me-2">Login</a>
+                        <a href="register.html" class="btn btn-primary">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Help Header -->
+    <section class="bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1 class="display-4 fw-bold mb-3">How Can We Help?</h1>
+                    <p class="lead mb-4">Find answers to common questions or contact our support team.</p>
+                    <div class="search-box bg-white p-2 rounded shadow-sm">
+                        <form id="helpSearchForm" class="d-flex">
+                            <input type="text" class="form-control border-0 me-2" id="helpSearch" placeholder="Search for help topics...">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <img src="https://via.placeholder.com/600x400" alt="Customer Support" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Categories -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-primary bg-opacity-10 text-primary mx-auto mb-4">
+                                <i class="fas fa-user-plus fa-2x"></i>
+                            </div>
+                            <h4>Account & Profile</h4>
+                            <p class="text-muted mb-3">Help with registration, login, and profile settings.</p>
+                            <a href="#account" class="btn btn-outline-primary">View Topics</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-primary bg-opacity-10 text-primary mx-auto mb-4">
+                                <i class="fas fa-users fa-2x"></i>
+                            </div>
+                            <h4>Groups & Community</h4>
+                            <p class="text-muted mb-3">Information about joining, creating, and managing groups.</p>
+                            <a href="#groups" class="btn btn-outline-primary">View Topics</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-primary bg-opacity-10 text-primary mx-auto mb-4">
+                                <i class="fas fa-gift fa-2x"></i>
+                            </div>
+                            <h4>Giving & Receiving</h4>
+                            <p class="text-muted mb-3">Help with creating posts, responding to offers, and exchanges.</p>
+                            <a href="#giving" class="btn btn-outline-primary">View Topics</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-primary bg-opacity-10 text-primary mx-auto mb-4">
+                                <i class="fas fa-shield-alt fa-2x"></i>
+                            </div>
+                            <h4>Safety & Privacy</h4>
+                            <p class="text-muted mb-3">Information about staying safe and protecting your privacy.</p>
+                            <a href="#safety" class="btn btn-outline-primary">View Topics</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-primary bg-opacity-10 text-primary mx-auto mb-4">
+                                <i class="fas fa-flag fa-2x"></i>
+                            </div>
+                            <h4>Reporting Issues</h4>
+                            <p class="text-muted mb-3">How to report problems, inappropriate content, or users.</p>
+                            <a href="#reporting" class="btn btn-outline-primary">View Topics</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-primary bg-opacity-10 text-primary mx-auto mb-4">
+                                <i class="fas fa-hands-helping fa-2x"></i>
+                            </div>
+                            <h4>Volunteering</h4>
+                            <p class="text-muted mb-3">Information about becoming a volunteer or group admin.</p>
+                            <a href="#volunteering" class="btn btn-outline-primary">View Topics</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Sections -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 mb-4">
+                    <!-- FAQ Navigation -->
+                    <div class="card border-0 shadow-sm sticky-lg-top" style="top: 100px;">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Help Topics</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <nav id="faq-nav" class="nav flex-column">
+                                <a class="nav-link" href="#account">Account & Profile</a>
+                                <a class="nav-link" href="#groups">Groups & Community</a>
+                                <a class="nav-link" href="#giving">Giving & Receiving</a>
+                                <a class="nav-link" href="#safety">Safety & Privacy</a>
+                                <a class="nav-link" href="#reporting">Reporting Issues</a>
+                                <a class="nav-link" href="#volunteering">Volunteering</a>
+                                <a class="nav-link" href="#contact">Contact Support</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <!-- Account & Profile Section -->
+                    <div id="account" class="mb-5">
+                        <h2 class="mb-4">Account & Profile</h2>
+                        <div class="accordion" id="accountAccordion">
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="accountHeading1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accountCollapse1" aria-expanded="true" aria-controls="accountCollapse1">
+                                        How do I create an account?
+                                    </button>
+                                </h2>
+                                <div id="accountCollapse1" class="accordion-collapse collapse show" aria-labelledby="accountHeading1" data-bs-parent="#accountAccordion">
+                                    <div class="accordion-body">
+                                        <p>Creating an account on Buy Nothing is simple:</p>
+                                        <ol>
+                                            <li>Click the "Sign Up" button in the top right corner of the page</li>
+                                            <li>Enter your email address and create a password</li>
+                                            <li>Alternatively, you can sign up using your Google or Facebook account</li>
+                                            <li>Complete your profile information, including your name and location</li>
+                                            <li>Agree to the community guidelines</li>
+                                            <li>Verify your email address by clicking the link sent to your inbox</li>
+                                        </ol>
+                                        <p>Once your account is created, you'll be able to join local groups and start participating in the Buy Nothing community.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="accountHeading2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accountCollapse2" aria-expanded="false" aria-controls="accountCollapse2">
+                                        How do I reset my password?
+                                    </button>
+                                </h2>
+                                <div id="accountCollapse2" class="accordion-collapse collapse" aria-labelledby="accountHeading2" data-bs-parent="#accountAccordion">
+                                    <div class="accordion-body">
+                                        <p>If you've forgotten your password, you can reset it by following these steps:</p>
+                                        <ol>
+                                            <li>Click the "Login" button in the top right corner of the page</li>
+                                            <li>Click the "Forgot Password?" link below the login form</li>
+                                            <li>Enter the email address associated with your account</li>
+                                            <li>Check your email for a password reset link</li>
+                                            <li>Click the link and follow the instructions to create a new password</li>
+                                        </ol>
+                                        <p>If you don't receive the password reset email within a few minutes, check your spam folder or try again.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="accountHeading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accountCollapse3" aria-expanded="false" aria-controls="accountCollapse3">
+                                        How do I update my profile information?
+                                    </button>
+                                </h2>
+                                <div id="accountCollapse3" class="accordion-collapse collapse" aria-labelledby="accountHeading3" data-bs-parent="#accountAccordion">
+                                    <div class="accordion-body">
+                                        <p>You can update your profile information at any time:</p>
+                                        <ol>
+                                            <li>Click on your profile picture in the top right corner of the page</li>
+                                            <li>Select "My Profile" from the dropdown menu</li>
+                                            <li>Click the "Edit Profile" button</li>
+                                            <li>Update your information as needed</li>
+                                            <li>Click "Save Changes" to apply your updates</li>
+                                        </ol>
+                                        <p>You can update your name, profile picture, bio, and other information. Note that changing your location may affect which groups you can join.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Groups & Community Section -->
+                    <div id="groups" class="mb-5">
+                        <h2 class="mb-4">Groups & Community</h2>
+                        <div class="accordion" id="groupsAccordion">
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="groupsHeading1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#groupsCollapse1" aria-expanded="true" aria-controls="groupsCollapse1">
+                                        How do I find and join a local group?
+                                    </button>
+                                </h2>
+                                <div id="groupsCollapse1" class="accordion-collapse collapse show" aria-labelledby="groupsHeading1" data-bs-parent="#groupsAccordion">
+                                    <div class="accordion-body">
+                                        <p>Finding and joining a local Buy Nothing group is easy:</p>
+                                        <ol>
+                                            <li>Click on "Find Groups" in the navigation menu</li>
+                                            <li>Enter your location or allow the site to use your current location</li>
+                                            <li>Browse the list of groups near you</li>
+                                            <li>Click on a group to view more details</li>
+                                            <li>Click the "Join Group" button to request membership</li>
+                                            <li>Group admins will review your request and approve it if you meet the group's criteria (usually based on location)</li>
+                                        </ol>
+                                        <p>Once approved, you'll be able to see posts from the group and create your own posts to give, ask, or lend items.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="groupsHeading2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#groupsCollapse2" aria-expanded="false" aria-controls="groupsCollapse2">
+                                        How do I create a new group?
+                                    </button>
+                                </h2>
+                                <div id="groupsCollapse2" class="accordion-collapse collapse" aria-labelledby="groupsHeading2" data-bs-parent="#groupsAccordion">
+                                    <div class="accordion-body">
+                                        <p>If there isn't a Buy Nothing group in your area, you can start one:</p>
+                                        <ol>
+                                            <li>Click on "Find Groups" in the navigation menu</li>
+                                            <li>Search for your location to confirm there isn't already a group</li>
+                                            <li>Click the "Start a Group" button</li>
+                                            <li>Fill out the group creation form with details about your location and community</li>
+                                            <li>Agree to serve as an admin for the group</li>
+                                            <li>Submit your request</li>
+                                        </ol>
+                                        <p>Our team will review your request and provide guidance on setting up and managing your new group. As a group admin, you'll be responsible for approving new members, moderating posts, and helping to build a positive community.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="groupsHeading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#groupsCollapse3" aria-expanded="false" aria-controls="groupsCollapse3">
+                                        Can I be a member of multiple groups?
+                                    </button>
+                                </h2>
+                                <div id="groupsCollapse3" class="accordion-collapse collapse" aria-labelledby="groupsHeading3" data-bs-parent="#groupsAccordion">
+                                    <div class="accordion-body">
+                                        <p>Yes, you can join multiple Buy Nothing groups. This might be useful if:</p>
+                                        <ul>
+                                            <li>You live near the border of two group areas</li>
+                                            <li>You spend significant time in multiple locations (e.g., home and work)</li>
+                                            <li>You're moving and want to join your new neighborhood group</li>
+                                        </ul>
+                                        <p>However, we encourage members to primarily participate in their immediate local community to build stronger neighborhood connections. Some groups may have specific rules about membership in multiple groups, so please check each group's guidelines.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Giving & Receiving Section -->
+                    <div id="giving" class="mb-5">
+                        <h2 class="mb-4">Giving & Receiving</h2>
+                        <div class="accordion" id="givingAccordion">
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="givingHeading1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#givingCollapse1" aria-expanded="true" aria-controls="givingCollapse1">
+                                        How do I create a post to give something away?
+                                    </button>
+                                </h2>
+                                <div id="givingCollapse1" class="accordion-collapse collapse show" aria-labelledby="givingHeading1" data-bs-parent="#givingAccordion">
+                                    <div class="accordion-body">
+                                        <p>To create a post offering an item:</p>
+                                        <ol>
+                                            <li>From your dashboard or group page, click the "Create Post" button</li>
+                                            <li>Select "Give" as the post type</li>
+                                            <li>Add a title and description for your item</li>
+                                            <li>Upload photos of the item (recommended)</li>
+                                            <li>Specify pickup details (location, availability, etc.)</li>
+                                            <li>Select which group(s) to post in</li>
+                                            <li>Click "Post" to publish your offer</li>
+                                        </ol>
+                                        <p>Be clear about the condition of the item and any specific details about pickup. You can choose how to select a recipient (first come, random selection, etc.) and update your post when the item has been claimed.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="givingHeading2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#givingCollapse2" aria-expanded="false" aria-controls="givingCollapse2">
+                                        How do I request an item?
+                                    </button>
+                                </h2>
+                                <div id="givingCollapse2" class="accordion-collapse collapse" aria-labelledby="givingHeading2" data-bs-parent="#givingAccordion">
+                                    <div class="accordion-body">
+                                        <p>There are two ways to request items:</p>
+                                        <h6>Responding to a GIVE post:</h6>
+                                        <ol>
+                                            <li>Comment on the post expressing your interest</li>
+                                            <li>Wait for the giver to select you as the recipient</li>
+                                            <li>Arrange pickup details through private messages</li>
+                                        </ol>
+                                        <h6>Creating an ASK post:</h6>
+                                        <ol>
+                                            <li>From your dashboard or group page, click the "Create Post" button</li>
+                                            <li>Select "Ask" as the post type</li>
+                                            <li>Describe what you're looking for</li>
+                                            <li>Add any relevant details (size, condition, urgency, etc.)</li>
+                                            <li>Select which group(s) to post in</li>
+                                            <li>Click "Post" to publish your request</li>
+                                        </ol>
+                                        <p>Be specific about what you're looking for, but also be patient. Not all requests can be fulfilled immediately.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="givingHeading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#givingCollapse3" aria-expanded="false" aria-controls="givingCollapse3">
+                                        What items are not allowed on Buy Nothing?
+                                    </button>
+                                </h2>
+                                <div id="givingCollapse3" class="accordion-collapse collapse" aria-labelledby="givingHeading3" data-bs-parent="#givingAccordion">
+                                    <div class="accordion-body">
+                                        <p>The following items are prohibited on Buy Nothing:</p>
+                                        <ul>
+                                            <li>Illegal items or substances</li>
+                                            <li>Weapons or dangerous items</li>
+                                            <li>Prescription medications</li>
+                                            <li>Alcohol or tobacco products</li>
+                                            <li>Recalled or unsafe items</li>
+                                            <li>Adult content or services</li>
+                                            <li>Expired food items</li>
+                                            <li>Used personal hygiene items</li>
+                                        </ul>
+                                        <p>Additionally, any posts that involve selling, bartering, or monetary exchanges are not allowed. Buy Nothing is strictly for gifting and lending.</p>
+                                        <p>For a complete list of prohibited items, please refer to our <a href="rules.html">Community Rules</a>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Safety & Privacy Section -->
+                    <div id="safety" class="mb-5">
+                        <h2 class="mb-4">Safety & Privacy</h2>
+                        <div class="accordion" id="safetyAccordion">
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="safetyHeading1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#safetyCollapse1" aria-expanded="true" aria-controls="safetyCollapse1">
+                                        How can I stay safe when exchanging items?
+                                    </button>
+                                </h2>
+                                <div id="safetyCollapse1" class="accordion-collapse collapse show" aria-labelledby="safetyHeading1" data-bs-parent="#safetyAccordion">
+                                    <div class="accordion-body">
+                                        <p>Here are some safety tips for exchanging items:</p>
+                                        <ul>
+                                            <li><strong>Meet in public places</strong> for first-time exchanges, especially with users you don't know</li>
+                                            <li><strong>Bring a friend</strong> if you're meeting someone new or going to an unfamiliar location</li>
+                                            <li><strong>Share your plans</strong> with a friend or family member, including where you're going and when</li>
+                                            <li><strong>Exchange during daylight hours</strong> when possible</li>
+                                            <li><strong>Trust your instincts</strong> - if something feels wrong, cancel the exchange</li>
+                                            <li><strong>Keep personal information private</strong> until necessary for the exchange</li>
+                                            <li><strong>Use the messaging system</strong> within the platform rather than sharing personal contact information initially</li>
+                                        </ul>
+                                        <p>Remember that your safety is more important than any item or exchange. Never feel pressured to complete an exchange if you feel uncomfortable.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="safetyHeading2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#safetyCollapse2" aria-expanded="false" aria-controls="safetyCollapse2">
+                                        How is my personal information protected?
+                                    </button>
+                                </h2>
+                                <div id="safetyCollapse2" class="accordion-collapse collapse" aria-labelledby="safetyHeading2" data-bs-parent="#safetyAccordion">
+                                    <div class="accordion-body">
+                                        <p>We take your privacy seriously:</p>
+                                        <ul>
+                                            <li>Your full address is never publicly visible to other users</li>
+                                            <li>Your contact information is only shared with users you choose to message</li>
+                                            <li>You control what personal information appears on your profile</li>
+                                            <li>Group membership is limited to verified users in your local area</li>
+                                            <li>Our platform uses encryption to protect your data</li>
+                                            <li>We never sell your personal information to third parties</li>
+                                        </ul>
+                                        <p>For more details on how we collect, use, and protect your information, please review our <a href="#">Privacy Policy</a>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="safetyHeading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#safetyCollapse3" aria-expanded="false" aria-controls="safetyCollapse3">
+                                        What should I do if I feel unsafe during an exchange?
+                                    </button>
+                                </h2>
+                                <div id="safetyCollapse3" class="accordion-collapse collapse" aria-labelledby="safetyHeading3" data-bs-parent="#safetyAccordion">
+                                    <div class="accordion-body">
+                                        <p>If you ever feel unsafe during an exchange:</p>
+                                        <ol>
+                                            <li><strong>Trust your instincts</strong> and leave the situation immediately if possible</li>
+                                            <li><strong>Contact local authorities</strong> if you feel threatened or in danger</li>
+                                            <li><strong>Report the user</strong> through our platform using the "Report" button</li>
+                                            <li><strong>Block the user</strong> to prevent further communication</li>
+                                            <li><strong>Contact our support team</strong> with details of the incident</li>
+                                        </ol>
+                                        <p>Your safety is our top priority. We encourage you to cancel any exchange that makes you uncomfortable, and we will support your decision to do so.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Reporting Issues Section -->
+                    <div id="reporting" class="mb-5">
+                        <h2 class="mb-4">Reporting Issues</h2>
+                        <div class="accordion" id="reportingAccordion">
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="reportingHeading1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#reportingCollapse1" aria-expanded="true" aria-controls="reportingCollapse1">
+                                        How do I report inappropriate content or behavior?
+                                    </button>
+                                </h2>
+                                <div id="reportingCollapse1" class="accordion-collapse collapse show" aria-labelledby="reportingHeading1" data-bs-parent="#reportingAccordion">
+                                    <div class="accordion-body">
+                                        <p>To report inappropriate content or behavior:</p>
+                                        <ol>
+                                            <li>Find the post, comment, or user profile you want to report</li>
+                                            <li>Click the three dots (⋮) or "More" button</li>
+                                            <li>Select "Report" from the dropdown menu</li>
+                                            <li>Choose the appropriate reason for reporting</li>
+                                            <li>Add any additional details that might help our moderators understand the issue</li>
+                                            <li>Submit the report</li>
+                                        </ol>
+                                        <p>Reports are reviewed by our moderation team, who will take appropriate action according to our community guidelines. Your report will remain anonymous to the reported user.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="reportingHeading2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#reportingCollapse2" aria-expanded="false" aria-controls="reportingCollapse2">
+                                        What happens after I report someone?
+                                    </button>
+                                </h2>
+                                <div id="reportingCollapse2" class="accordion-collapse collapse" aria-labelledby="reportingHeading2" data-bs-parent="#reportingAccordion">
+                                    <div class="accordion-body">
+                                        <p>After you submit a report:</p>
+                                        <ol>
+                                            <li>Our moderation team reviews the report, usually within 24-48 hours</li>
+                                            <li>We investigate the reported content or behavior</li>
+                                            <li>If we find a violation of our community guidelines, we take appropriate action, which may include:
+                                                <ul>
+                                                    <li>Removing the content</li>
+                                                    <li>Issuing a warning to the user</li>
+                                                    <li>Temporarily suspending the user's account</li>
+                                                    <li>Permanently banning the user in severe cases</li>
+                                                </ul>
+                                            </li>
+                                            <li>You may receive a notification that your report has been reviewed, but for privacy reasons, we may not be able to share specific details about actions taken</li>
+                                        </ol>
+                                        <p>We take all reports seriously and strive to maintain a safe, respectful community for all users.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="reportingHeading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#reportingCollapse3" aria-expanded="false" aria-controls="reportingCollapse3">
+                                        How do I report a technical issue or bug?
+                                    </button>
+                                </h2>
+                                <div id="reportingCollapse3" class="accordion-collapse collapse" aria-labelledby="reportingHeading3" data-bs-parent="#reportingAccordion">
+                                    <div class="accordion-body">
+                                        <p>If you encounter a technical issue or bug:</p>
+                                        <ol>
+                                            <li>Click on the "Help" link in the footer or navigation menu</li>
+                                            <li>Scroll to the "Contact Support" section</li>
+                                            <li>Fill out the support form, selecting "Technical Issue" as the category</li>
+                                            <li>Provide as much detail as possible, including:
+                                                <ul>
+                                                    <li>What you were trying to do</li>
+                                                    <li>What happened instead</li>
+                                                    <li>Your device and browser information</li>
+                                                    <li>Screenshots if available</li>
+                                                </ul>
+                                            </li>
+                                            <li>Submit the form</li>
+                                        </ol>
+                                        <p>Our technical team will investigate the issue and respond as soon as possible. Your feedback helps us improve the platform for everyone.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Volunteering Section -->
+                    <div id="volunteering" class="mb-5">
+                        <h2 class="mb-4">Volunteering</h2>
+                        <div class="accordion" id="volunteeringAccordion">
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="volunteeringHeading1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#volunteeringCollapse1" aria-expanded="true" aria-controls="volunteeringCollapse1">
+                                        How can I become a volunteer?
+                                    </button>
+                                </h2>
+                                <div id="volunteeringCollapse1" class="accordion-collapse collapse show" aria-labelledby="volunteeringHeading1" data-bs-parent="#volunteeringAccordion">
+                                    <div class="accordion-body">
+                                        <p>To become a Buy Nothing volunteer:</p>
+                                        <ol>
+                                            <li>Visit our <a href="volunteer.html">Volunteer page</a></li>
+                                            <li>Review the available volunteer roles and responsibilities</li>
+                                            <li>Fill out the volunteer application form</li>
+                                            <li>Specify which role(s) you're interested in</li>
+                                            <li>Share your relevant experience and motivation</li>
+                                            <li>Submit your application</li>
+                                        </ol>
+                                        <p>Our volunteer coordinator will review your application and contact you to discuss next steps. Volunteer opportunities include group admin, community builder, support volunteer, and translation volunteer roles.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="volunteeringHeading2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#volunteeringCollapse2" aria-expanded="false" aria-controls="volunteeringCollapse2">
+                                        What does a group admin do?
+                                    </button>
+                                </h2>
+                                <div id="volunteeringCollapse2" class="accordion-collapse collapse" aria-labelledby="volunteeringHeading2" data-bs-parent="#volunteeringAccordion">
+                                    <div class="accordion-body">
+                                        <p>Group admins are vital to the Buy Nothing community. Their responsibilities include:</p>
+                                        <ul>
+                                            <li>Reviewing and approving new member requests</li>
+                                            <li>Moderating posts and comments to ensure they follow community guidelines</li>
+                                            <li>Answering questions from group members</li>
+                                            <li>Resolving conflicts or issues within the group</li>
+                                            <li>Fostering a positive, inclusive community atmosphere</li>
+                                            <li>Helping new members understand how Buy Nothing works</li>
+                                            <li>Collaborating with other admins and the Buy Nothing team</li>
+                                        </ul>
+                                        <p>Group admins typically spend 3-5 hours per week on these activities. We provide training and ongoing support for all admins.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 shadow-sm mb-3">
+                                <h2 class="accordion-header" id="volunteeringHeading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#volunteeringCollapse3" aria-expanded="false" aria-controls="volunteeringCollapse3">
+                                        What training do volunteers receive?
+                                    </button>
+                                </h2>
+                                <div id="volunteeringCollapse3" class="accordion-collapse collapse" aria-labelledby="volunteeringHeading3" data-bs-parent="#volunteeringAccordion">
+                                    <div class="accordion-body">
+                                        <p>All Buy Nothing volunteers receive comprehensive training:</p>
+                                        <ul>
+                                            <li><strong>Orientation:</strong> Introduction to the Buy Nothing philosophy, values, and community guidelines</li>
+                                            <li><strong>Role-specific training:</strong> Detailed guidance on your specific volunteer role</li>
+                                            <li><strong>Platform training:</strong> How to use the admin tools and features</li>
+                                            <li><strong>Conflict resolution:</strong> Strategies for handling disagreements and difficult situations</li>
+                                            <li><strong>Community building:</strong> Tips for fostering an inclusive, active community</li>
+                                        </ul>
+                                        <p>In addition to initial training, volunteers have access to ongoing support, regular check-ins with the volunteer coordinator, and a community of other volunteers to share experiences and best practices.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Support Section -->
+                    <div id="contact" class="mb-5">
+                        <h2 class="mb-4">Contact Support</h2>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <p class="mb-4">Couldn't find the answer you're looking for? Our support team is here to help.</p>
+                                <form id="supportForm">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="name" class="form-label">Your Name</label>
+                                            <input type="text" class="form-control" id="name" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="email" class="form-label">Email Address</label>
+                                            <input type="email" class="form-control" id="email" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="subject" class="form-label">Subject</label>
+                                            <select class="form-select" id="subject" required>
+                                                <option value="" selected disabled>Select a topic</option>
+                                                <option value="account">Account Issues</option>
+                                                <option value="technical">Technical Problems</option>
+                                                <option value="report">Report a User or Content</option>
+                                                <option value="suggestion">Suggestion or Feedback</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="message" class="form-label">Message</label>
+                                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                                <label class="form-check-label" for="agreeTerms">
+                                                    I agree to the <a href="#">Privacy Policy</a>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mt-3">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Buy Nothing</h5>
+                    <p class="mb-3">A global movement where people give and receive freely, reducing waste and building community.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="groups.html" class="text-white text-decoration-none">Find Groups</a></li>
+                        <li class="mb-2"><a href="rules.html" class="text-white text-decoration-none">Rules</a></li>
+                        <li><a href="customer-service.html" class="text-white text-decoration-none">Help</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5 class="mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                        <li class="mb-2"><a href="volunteer.html" class="text-white text-decoration-none">Volunteer</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Community Events</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Local Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-3">Stay Connected</h5>
+                    <p>Subscribe to our newsletter for updates and news.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email" aria-label="Your email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                    <p class="mb-0"><i class="fas fa-phone me-2"></i> Customer Service: +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope me-2"></i> support@buynothing.org</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2023 Buy Nothing Project. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none me-3">Terms of Service</a>
+                    <a href="#" class="text-white text-decoration-none">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Support form submission
+            const supportForm = document.getElementById('supportForm');
+            if (supportForm) {
+                supportForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // In a real app, we would submit the form data to a server
+                    alert('Thank you for contacting us! We will respond to your inquiry as soon as possible.');
+                    this.reset();
+                });
+            }
+
+            // Help search functionality
+            const helpSearchForm = document.getElementById('helpSearchForm');
+            if (helpSearchForm) {
+                helpSearchForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const searchTerm = document.getElementById('helpSearch').value.toLowerCase();
+                    
+                    // Simple search implementation
+                    const accordionItems = document.querySelectorAll('.accordion-item');
+                    let foundResults = false;
+                    
+                    accordionItems.forEach(item => {
+                        const itemText = item.textContent.toLowerCase();
+                        const button = item.querySelector('.accordion-button');
+                        const collapse = bootstrap.Collapse.getInstance(item.querySelector('.accordion-collapse'));
+                        
+                        if (itemText.includes(searchTerm)) {
+                            foundResults = true;
+                            
+                            // Scroll to the first result
+                            if (!foundResults) {
+                                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                
+                                // Expand the accordion item if it's collapsed
+                                if (button.classList.contains('collapsed')) {
+                                    button.click();
+                                }
+                            }
+                            
+                            // Highlight the item
+                            item.classList.add('border-primary');
+                            setTimeout(() => {
+                                item.classList.remove('border-primary');
+                            }, 3000);
+                        }
+                    });
+                    
+                    if (!foundResults) {
+                        alert('No results found for "' + searchTerm + '". Please try a different search term.');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

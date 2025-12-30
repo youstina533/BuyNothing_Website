@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Rules - Buy Nothing</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Buy Nothing Logo" height="40">
+                <span class="ms-2 fw-bold text-primary">Buy Nothing</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="groups.html">Find Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="rules.html">Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="customer-service.html">Help</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <div class="dropdown me-2">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-globe"></i> English
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item active" href="#">English</a></li>
+                            <li><a class="dropdown-item" href="#">العربية</a></li>
+                            <li><a class="dropdown-item" href="#">Español</a></li>
+                            <li><a class="dropdown-item" href="#">Français</a></li>
+                        </ul>
+                    </div>
+                    <!-- User dropdown for logged in users -->
+                    <div class="dropdown d-none" id="user-dropdown">
+                        <button class="btn btn-link p-0 text-dark dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Profile Picture">
+                            <span class="d-none d-md-inline" id="username-display">User</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> My Profile</a></li>
+                            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logout-btn"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                    <!-- Login/Register buttons for guests -->
+                    <div id="auth-buttons">
+                        <a href="login.html" class="btn btn-outline-primary me-2">Login</a>
+                        <a href="register.html" class="btn btn-primary">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Rules Header -->
+    <section class="bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-3">Community Rules</h1>
+                    <p class="lead mb-0">Our guidelines for a respectful, safe, and generous community</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 mb-4">
+                    <!-- Rules Navigation -->
+                    <div class="card border-0 shadow-sm sticky-lg-top" style="top: 100px;">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Table of Contents</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <nav id="rules-nav" class="nav flex-column">
+                                <a class="nav-link active" href="#core-principles">Core Principles</a>
+                                <a class="nav-link" href="#giving-asking">Giving & Asking</a>
+                                <a class="nav-link" href="#prohibited-items">Prohibited Items</a>
+                                <a class="nav-link" href="#communication">Communication</a>
+                                <a class="nav-link" href="#moderation">Moderation</a>
+                                <a class="nav-link" href="#reporting">Reporting Issues</a>
+                                <a class="nav-link" href="#privacy">Privacy & Safety</a>
+                                <a class="nav-link" href="#group-specific">Group-Specific Rules</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <!-- Core Principles -->
+                    <div id="core-principles" class="mb-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="rule-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h2 class="mb-0">Core Principles</h2>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <p class="lead">The Buy Nothing Project is built on the following core principles:</p>
+                                <div class="row g-4 mt-2">
+                                    <div class="col-md-6">
+                                        <div class="d-flex">
+                                            <div class="me-3 text-primary">
+                                                <i class="fas fa-gift fa-2x"></i>
+                                            </div>
+                                            <div>
+                                                <h5>Give Freely</h5>
+                                                <p>All items and services must be given freely without any expectation of rewards, trades, or compensation.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex">
+                                            <div class="me-3 text-primary">
+                                                <i class="fas fa-users fa-2x"></i>
+                                            </div>
+                                            <div>
+                                                <h5>Build Community</h5>
+                                                <p>Our goal is to build stronger, more connected local communities through sharing.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex">
+                                            <div class="me-3 text-primary">
+                                                <i class="fas fa-recycle fa-2x"></i>
+                                            </div>
+                                            <div>
+                                                <h5>Reduce Waste</h5>
+                                                <p>By giving items a second life, we reduce waste and environmental impact.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex">
+                                            <div class="me-3 text-primary">
+                                                <i class="fas fa-handshake fa-2x"></i>
+                                            </div>
+                                            <div>
+                                                <h5>Respect & Kindness</h5>
+                                                <p>Treat all community members with respect, kindness, and understanding.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Giving & Asking -->
+                    <div id="giving-asking" class="mb-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="rule-icon bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <h2 class="mb-0">Giving & Asking</h2>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <h5 class="mb-3">Guidelines for Giving:</h5>
+                                <ul class="mb-4">
+                                    <li>All items must be given freely with no expectation of payment, trades, or favors.</li>
+                                    <li>Be clear about the condition of items, including any defects or issues.</li>
+                                    <li>Include photos when possible to help recipients understand what you're offering.</li>
+                                    <li>You may choose recipients in any way you wish (first come, random selection, etc.).</li>
+                                    <li>Once you've committed to giving an item to someone, please follow through.</li>
+                                    <li>If an item is no longer available, update or delete your post promptly.</li>
+                                </ul>
+
+                                <h5 class="mb-3">Guidelines for Asking:</h5>
+                                <ul class="mb-4">
+                                    <li>Be specific about what you're looking for and why if relevant.</li>
+                                    <li>It's okay to ask for anything (within the prohibited items guidelines).</li>
+                                    <li>Be respectful if your request cannot be fulfilled.</li>
+                                    <li>If you no longer need an item, update or delete your post.</li>
+                                </ul>
+
+                                <h5 class="mb-3">Services & Lending:</h5>
+                                <ul>
+                                    <li>Services (like help moving, tutoring, etc.) can be offered freely.</li>
+                                    <li>Items can be lent temporarily with clear expectations about return.</li>
+                                    <li>Professional services may be offered, but not advertised as a business.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prohibited Items -->
+                    <div id="prohibited-items" class="mb-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="rule-icon bg-danger text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                <i class="fas fa-ban"></i>
+                            </div>
+                            <h2 class="mb-0">Prohibited Items</h2>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <p class="mb-4">The following items are not allowed to be given or requested:</p>
+                                
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-times-circle text-danger me-2"></i>
+                                            <span>Illegal items or substances</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-times-circle text-danger me-2"></i>
+                                            <span>Weapons or dangerous items</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-times-circle text-danger me-2"></i>
+                                            <span>Prescription medications</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-times-circle text-danger me-2"></i>
+                                            <span>Alcohol or tobacco products</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-times-circle text-danger me-2"></i>
+                                            <span>Recalled or unsafe items</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-times-circle text-danger me-2"></i>
+                                            <span>Adult content or services</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-times-circle text-danger me-2"></i>
+                                            <span>Expired food items</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-times-circle text-danger me-2"></i>
+                                            <span>Used personal hygiene items</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-warning mt-4">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    <strong>Important:</strong> Items that violate these guidelines will be removed, and repeated violations may result in account suspension.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Communication -->
+                    <div id="communication" class="mb-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="rule-icon bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h2 class="mb-0">Communication</h2>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <h5 class="mb-3">Community Interaction Guidelines:</h5>
+                                <ul class="mb-4">
+                                    <li>Be respectful and kind in all communications.</li>
+                                    <li>No hate speech, harassment, or bullying of any kind.</li>
+                                    <li>Avoid political, religious, or controversial discussions.</li>
+                                    <li>Respect others' time and commitments.</li>
+                                    <li>If you can't make a scheduled pickup, let the giver know as soon as possible.</li>
+                                    <li>Thank people for their generosity.</li>
+                                </ul>
+
+                                <h5 class="mb-3">Messaging Guidelines:</h5>
+                                <ul>
+                                    <li>Keep personal information private until necessary for exchange.</li>
+                                    <li>Be clear about pickup/delivery arrangements.</li>
+                                    <li>Report any suspicious or uncomfortable messages to moderators.</li>
+                                    <li>Do not use the messaging system for solicitation or harassment.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Moderation -->
+                    <div id="moderation" class="mb-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="rule-icon bg-warning text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                <i class="fas fa-gavel"></i>
+                            </div>
+                            <h2 class="mb-0">Moderation</h2>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <h5 class="mb-3">Moderator Roles:</h5>
+                                <ul class="mb-4">
+                                    <li>Moderators are volunteers who help maintain community standards.</li>
+                                    <li>They review reported content and enforce community guidelines.</li>
+                                    <li>Moderators can remove inappropriate content and issue warnings.</li>
+                                    <li>In serious cases, they may temporarily or permanently suspend accounts.</li>
+                                </ul>
+
+                                <h5 class="mb-3">Consequences for Rule Violations:</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Violation</th>
+                                                <th>First Offense</th>
+                                                <th>Second Offense</th>
+                                                <th>Third Offense</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Minor Rule Violation</td>
+                                                <td>Warning</td>
+                                                <td>24-hour suspension</td>
+                                                <td>7-day suspension</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Major Rule Violation</td>
+                                                <td>7-day suspension</td>
+                                                <td>30-day suspension</td>
+                                                <td>Permanent ban</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Severe Violation (harassment, illegal activity)</td>
+                                                <td colspan="3" class="text-center">Immediate permanent ban</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reporting -->
+                    <div id="reporting" class="mb-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="rule-icon bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                <i class="fas fa-flag"></i>
+                            </div>
+                            <h2 class="mb-0">Reporting Issues</h2>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <h5 class="mb-3">How to Report:</h5>
+                                <ol class="mb-4">
+                                    <li>Click the "Report" button on any post or comment that violates guidelines.</li>
+                                    <li>Select the appropriate reason for reporting.</li>
+                                    <li>Add any additional details that might help moderators understand the issue.</li>
+                                    <li>Submit the report.</li>
+                                </ol>
+
+                                <h5 class="mb-3">What to Report:</h5>
+                                <ul class="mb-4">
+                                    <li>Prohibited items or services</li>
+                                    <li>Harassment or bullying</li>
+                                    <li>Spam or commercial content</li>
+                                    <li>Inappropriate or offensive content</li>
+                                    <li>Safety concerns</li>
+                                    <li>Scams or suspicious activity</li>
+                                </ul>
+
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    For urgent issues or concerns about personal safety, please contact your local authorities directly.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacy & Safety -->
+                    <div id="privacy" class="mb-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="rule-icon bg-dark text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h2 class="mb-0">Privacy & Safety</h2>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <h5 class="mb-3">Personal Information:</h5>
+                                <ul class="mb-4">
+                                    <li>Never share your full address publicly in posts or comments.</li>
+                                    <li>Share personal contact information only through private messages.</li>
+                                    <li>Be cautious about sharing personal details even in private messages.</li>
+                                    <li>Never share financial information with other users.</li>
+                                </ul>
+
+                                <h5 class="mb-3">Meeting Safety:</h5>
+                                <ul class="mb-4">
+                                    <li>For first-time exchanges, consider meeting in public places.</li>
+                                    <li>Let someone know when and where you're meeting someone.</li>
+                                    <li>Trust your instincts - if something feels wrong, cancel the exchange.</li>
+                                    <li>Be especially cautious when inviting strangers to your home or visiting theirs.</li>
+                                </ul>
+
+                                <div class="alert alert-danger">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    <strong>Safety First:</strong> Your personal safety is more important than any item or exchange. Never feel pressured to complete an exchange if you feel uncomfortable.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Group-Specific Rules -->
+                    <div id="group-specific" class="mb-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="rule-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <h2 class="mb-0">Group-Specific Rules</h2>
+                        </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <p class="mb-4">In addition to the platform-wide rules, individual groups may have their own specific guidelines based on local needs and preferences. These might include:</p>
+                                
+                                <ul class="mb-4">
+                                    <li>Geographic boundaries for membership</li>
+                                    <li>Specific days for certain types of posts</li>
+                                    <li>Local customs or practices</li>
+                                    <li>Additional restrictions based on community needs</li>
+                                </ul>
+                                
+                                <div class="alert alert-primary">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    Always check your local group's specific rules when joining a new community. These can usually be found in the group's description or pinned posts.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rules Agreement -->
+                    <div class="card border-0 shadow-sm mb-5">
+                        <div class="card-body p-4 text-center">
+                            <h4 class="mb-3">Agree to Community Rules</h4>
+                            <p>By using the Buy Nothing platform, you agree to follow these community guidelines and rules.</p>
+                            <div class="form-check d-inline-block text-start mb-3">
+                                <input class="form-check-input" type="checkbox" id="agreeRules">
+                                <label class="form-check-label" for="agreeRules">
+                                    I have read and agree to follow the community rules
+                                </label>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-primary" id="confirmRules">Confirm Agreement</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Buy Nothing</h5>
+                    <p class="mb-3">A global movement where people give and receive freely, reducing waste and building community.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="groups.html" class="text-white text-decoration-none">Find Groups</a></li>
+                        <li class="mb-2"><a href="rules.html" class="text-white text-decoration-none">Rules</a></li>
+                        <li><a href="customer-service.html" class="text-white text-decoration-none">Help</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5 class="mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                        <li class="mb-2"><a href="volunteer.html" class="text-white text-decoration-none">Volunteer</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Community Events</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Local Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-3">Stay Connected</h5>
+                    <p>Subscribe to our newsletter for updates and news.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email" aria-label="Your email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                    <p class="mb-0"><i class="fas fa-phone me-2"></i> Customer Service: +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope me-2"></i> support@buynothing.org</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2023 Buy Nothing Project. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none me-3">Terms of Service</a>
+                    <a href="#" class="text-white text-decoration-none">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Rules agreement button
+            const agreeCheckbox = document.getElementById('agreeRules');
+            const confirmButton = document.getElementById('confirmRules');
+            
+            confirmButton.addEventListener('click', function() {
+                if (agreeCheckbox.checked) {
+                    localStorage.setItem('rulesAgreed', 'true');
+                    alert('Thank you for agreeing to our community rules!');
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('Please check the box to confirm you agree to our community rules.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

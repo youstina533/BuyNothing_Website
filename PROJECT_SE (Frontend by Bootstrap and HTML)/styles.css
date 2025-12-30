@@ -1,0 +1,166 @@
+/* Custom CSS for Buy Nothing Platform */
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.divider-text {
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+}
+
+.divider-text::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 1px;
+    background-color: #dee2e6;
+    top: 50%;
+    left: -150px;
+    z-index: -1;
+}
+
+.divider-text::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 1px;
+    background-color: #dee2e6;
+    top: 50%;
+    right: -150px;
+    z-index: -1;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #f8f9fa;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+@media (min-width: 992px) {
+    .hero-section {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+/* Card Hover Effects */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.btn-outline-primary {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* Social Icons */
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #28a745;
+    transform: translateY(-3px);
+}
+
+/* Footer Styles */
+footer a:hover {
+    color: #28a745 !important;
+}
+
+/* Post Badges */
+.badge.bg-success {
+    background-color: #28a745 !important;
+}
+
+.badge.bg-primary {
+    background-color: #007bff !important;
+}
+
+.badge.bg-info {
+    background-color: #17a2b8 !important;
+}
+
+/* Form Focus Styles */
+.form-control:focus, .btn:focus {
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+    border-color: #28a745;
+}
+
+/* Navbar Styles */
+.navbar {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link.active {
+    color: #28a745;
+}
+
+/* Map Popup Styles */
+.leaflet-popup-content-wrapper {
+    border-radius: 8px;
+}
+
+.leaflet-popup-content {
+    margin: 12px;
+}
+
+.leaflet-popup-content button {
+    margin-top: 8px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #28a745;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #218838;
+}

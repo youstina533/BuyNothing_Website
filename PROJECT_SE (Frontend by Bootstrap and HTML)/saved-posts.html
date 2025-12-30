@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Posts - Buy Nothing</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">
+                <img src="images/logo.png" alt="Buy Nothing Logo" height="40">
+                <span class="ms-2 fw-bold text-primary">Buy Nothing</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="my-groups.html">My Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="messages.html">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="saved-posts.html">Saved</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rules.html">Rules</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown me-3">
+                        <button class="btn btn-link text-dark position-relative p-0" type="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bell fa-lg"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown" style="width: 300px;">
+                            <li><h6 class="dropdown-header">Notifications</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center py-2" href="#">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <p class="mb-0"><strong>Sarah</strong> commented on your post</p>
+                                        <small class="text-muted">2 hours ago</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center py-2" href="#">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <p class="mb-0"><strong>Ahmed</strong> is interested in your item</p>
+                                        <small class="text-muted">5 hours ago</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center py-2" href="#">
+                                    <div class="bg-primary text-white rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <p class="mb-0">You were added to <strong>Downtown Group</strong></p>
+                                        <small class="text-muted">1 day ago</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-center" href="#">See all notifications</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-link p-0 text-dark dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Profile Picture">
+                            <span class="d-none d-md-inline">John Doe</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> My Profile</a></li>
+                            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Saved Posts Header -->
+    <section class="bg-primary text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="mb-0">Saved Posts</h1>
+                    <p class="lead mb-0">Items and services you've bookmarked for later</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search saved posts..." aria-label="Search saved posts">
+                        <button class="btn btn-light" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Saved Posts Content -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Tabs -->
+            <ul class="nav nav-pills mb-4" id="savedPostsTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true">
+                        <i class="fas fa-bookmark me-2"></i> All Saved
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="give-tab" data-bs-toggle="tab" data-bs-target="#give" type="button" role="tab" aria-controls="give" aria-selected="false">
+                        <i class="fas fa-hand-holding-heart me-2"></i> Give
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="ask-tab" data-bs-toggle="tab" data-bs-target="#ask" type="button" role="tab" aria-controls="ask" aria-selected="false">
+                        <i class="fas fa-hand-paper me-2"></i> Ask
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="lend-tab" data-bs-toggle="tab" data-bs-target="#lend" type="button" role="tab" aria-controls="lend" aria-selected="false">
+                        <i class="fas fa-exchange-alt me-2"></i> Lend
+                    </button>
+                </li>
+            </ul>
+            
+            <!-- Tab Content -->
+            <div class="tab-content" id="savedPostsTabContent">
+                <!-- All Saved Tab -->
+                <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                    <div class="row g-4">
+                        <!-- Saved Post 1 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-white d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <h6 class="mb-0">Sarah Johnson</h6>
+                                        <small class="text-muted">Downtown Cairo Group • 2 hours ago</small>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <span class="badge bg-success">GIVE</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Kitchen Blender - Like New</h5>
+                                    <p class="card-text">I'm giving away my blender as I just got a new one. It's only 6 months old and works perfectly. Great for smoothies and soups!</p>
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-6">
+                                            <img src="https://via.placeholder.com/300x200" class="img-fluid rounded" alt="Blender">
+                                        </div>
+                                        <div class="col-6">
+                                            <img src="https://via.placeholder.com/300x200" class="img-fluid rounded" alt="Blender">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center text-muted mb-2">
+                                        <i class="fas fa-map-marker-alt me-2"></i>
+                                        <span>2 km away • Pickup only</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white">
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-primary">
+                                            <i class="far fa-comment me-1"></i> Contact
+                                        </button>
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-secondary" type="button" id="post1Options" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="post1Options">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-share me-2"></i> Share</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i> Report</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="far fa-trash-alt me-2"></i> Remove from Saved</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Saved Post 2 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-white d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <h6 class="mb-0">Mohamed Ali</h6>
+                                        <small class="text-muted">Maadi Community Group • 5 hours ago</small>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <span class="badge bg-primary">ASK</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Looking for Children's Books (Ages 5-8)</h5>
+                                    <p class="card-text">My kids love reading and we're looking for some new books for them. If anyone has children's books they no longer need, we would be grateful!</p>
+                                    <div class="d-flex align-items-center text-muted mb-2">
+                                        <i class="fas fa-map-marker-alt me-2"></i>
+                                        <span>5 km away • Pickup or delivery</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white">
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-primary">
+                                            <i class="far fa-comment me-1"></i> Contact
+                                        </button>
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-secondary" type="button" id="post2Options" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="post2Options">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-share me-2"></i> Share</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i> Report</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="far fa-trash-alt me-2"></i> Remove from Saved</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Saved Post 3 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-white d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <h6 class="mb-0">Fatima Khalid</h6>
+                                        <small class="text-muted">New Cairo Group • 1 day ago</small>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <span class="badge bg-info">LEND</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Lending: Camping Equipment</h5>
+                                    <p class="card-text">I have a 4-person tent, sleeping bags, and camping stove that I'm happy to lend for short trips. Available for the next month.</p>
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-4">
+                                            <img src="https://via.placeholder.com/200x150" class="img-fluid rounded" alt="Tent">
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="https://via.placeholder.com/200x150" class="img-fluid rounded" alt="Sleeping Bags">
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="https://via.placeholder.com/200x150" class="img-fluid rounded" alt="Camping Stove">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center text-muted mb-2">
+                                        <i class="fas fa-map-marker-alt me-2"></i>
+                                        <span>8 km away • Pickup only</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white">
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-primary">
+                                            <i class="far fa-comment me-1"></i> Contact
+                                        </button>
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-secondary" type="button" id="post3Options" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="post3Options">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-share me-2"></i> Share</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i> Report</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="far fa-trash-alt me-2"></i> Remove from Saved</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Saved Post 4 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-white d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <h6 class="mb-0">Ahmed Hassan</h6>
+                                        <small class="text-muted">Heliopolis Community Group • 3 days ago</small>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <span class="badge bg-success">GIVE</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Office Chair - Good Condition</h5>
+                                    <p class="card-text">I'm upgrading my home office and giving away my current chair. It's comfortable and in good condition, perfect for a home office or study.</p>
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-12">
+                                            <img src="https://via.placeholder.com/300x200" class="img-fluid rounded" alt="Office Chair">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center text-muted mb-2">
+                                        <i class="fas fa-map-marker-alt me-2"></i>
+                                        <span>6.5 km away • Pickup only</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white">
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-primary">
+                                            <i class="far fa-comment me-1"></i> Contact
+                                        </button>
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-secondary" type="button" id="post4Options" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="post4Options">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-share me-2"></i> Share</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i> Report</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="far fa-trash-alt me-2"></i> Remove from Saved</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Give Tab -->
+                <div class="tab-pane fade" id="give" role="tabpanel" aria-labelledby="give-tab">
+                    <div class="row g-4">
+                        <!-- Give Post 1 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-white d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <h6 class="mb-0">Sarah Johnson</h6>
+                                        <small class="text-muted">Downtown Cairo Group • 2 hours ago</small>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <span class="badge bg-success">GIVE</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Kitchen Blender - Like New</h5>
+                                    <p class="card-text">I'm giving away my blender as I just got a new one. It's only 6 months old and works perfectly. Great for smoothies and soups!</p>
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-6">
+                                            <img src="https://via.placeholder.com/300x200" class="img-fluid rounded" alt="Blender">
+                                        </div>
+                                        <div class="col-6">
+                                            <img src="https://via.placeholder.com/300x200" class="img-fluid rounded" alt="Blender">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center text-muted mb-2">
+                                        <i class="fas fa-map-marker-alt me-2"></i>
+                                        <span>2 km away • Pickup only</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white">
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-primary">
+                                            <i class="far fa-comment me-1"></i> Contact
+                                        </button>
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-secondary" type="button" id="givePost1Options" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="givePost1Options">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-share me-2"></i> Share</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i> Report</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="far fa-trash-alt me-2"></i> Remove from Saved</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Give Post 2 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-white d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <h6 class="mb-0">Ahmed Hassan</h6>
+                                        <small class="text-muted">Heliopolis Community Group • 3 days ago</small>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <span class="badge bg-success">GIVE</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Office Chair - Good Condition</h5>
+                                    <p class="card-text">I'm upgrading my home office and giving away my current chair. It's comfortable and in good condition, perfect for a home office or study.</p>
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-12">
+                                            <img src="https://via.placeholder.com/300x200" class="img-fluid rounded" alt="Office Chair">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center text-muted mb-2">
+                                        <i class="fas fa-map-marker-alt me-2"></i>
+                                        <span>6.5 km away • Pickup only</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white">
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-primary">
+                                            <i class="far fa-comment me-1"></i> Contact
+                                        </button>
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-secondary" type="button" id="givePost2Options" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="givePost2Options">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-share me-2"></i> Share</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i> Report</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="far fa-trash-alt me-2"></i> Remove from Saved</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ask Tab -->
+                <div class="tab-pane fade" id="ask" role="tabpanel" aria-labelledby="ask-tab">
+                    <div class="row g-4">
+                        <!-- Ask Post 1 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-white d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <h6 class="mb-0">Mohamed Ali</h6>
+                                        <small class="text-muted">Maadi Community Group • 5 hours ago</small>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <span class="badge bg-primary">ASK</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Looking for Children's Books (Ages 5-8)</h5>
+                                    <p class="card-text">My kids love reading and we're looking for some new books for them. If anyone has children's books they no longer need, we would be grateful!</p>
+                                    <div class="d-flex align-items-center text-muted mb-2">
+                                        <i class="fas fa-map-marker-alt me-2"></i>
+                                        <span>5 km away • Pickup or delivery</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white">
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-primary">
+                                            <i class="far fa-comment me-1"></i> Contact
+                                        </button>
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-secondary" type="button" id="askPost1Options" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="askPost1Options">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-share me-2"></i> Share</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i> Report</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="far fa-trash-alt me-2"></i> Remove from Saved</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lend Tab -->
+                <div class="tab-pane fade" id="lend" role="tabpanel" aria-labelledby="lend-tab">
+                    <div class="row g-4">
+                        <!-- Lend Post 1 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-white d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <h6 class="mb-0">Fatima Khalid</h6>
+                                        <small class="text-muted">New Cairo Group • 1 day ago</small>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <span class="badge bg-info">LEND</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Lending: Camping Equipment</h5>
+                                    <p class="card-text">I have a 4-person tent, sleeping bags, and camping stove that I'm happy to lend for short trips. Available for the next month.</p>
+                                    <div class="row g-2 mb-3">
+                                        <div class="col-4">
+                                            <img src="https://via.placeholder.com/200x150" class="img-fluid rounded" alt="Tent">
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="https://via.placeholder.com/200x150" class="img-fluid rounded" alt="Sleeping Bags">
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="https://via.placeholder.com/200x150" class="img-fluid rounded" alt="Camping Stove">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center text-muted mb-2">
+                                        <i class="fas fa-map-marker-alt me-2"></i>
+                                        <span>8 km away • Pickup only</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white">
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-primary">
+                                            <i class="far fa-comment me-1"></i> Contact
+                                        </button>
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-secondary" type="button" id="lendPost1Options" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="lendPost1Options">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-share me-2"></i> Share</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i> Report</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="far fa-trash-alt me-2"></i> Remove from Saved</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- No Saved Posts Message (Hidden by default) -->
+            <div id="noSavedPosts" class="text-center py-5 d-none">
+                <div class="mb-4">
+                    <i class="fas fa-bookmark fa-4x text-muted"></i>
+                </div>
+                <h4>No saved posts yet</h4>
+                <p class="text-muted mb-4">When you save posts, they'll appear here for easy access.</p>
+                <a href="dashboard.html" class="btn btn-primary">
+                    <i class="fas fa-home me-2"></i> Browse Posts
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Buy Nothing</h5>
+                    <p class="mb-3">A global movement where people give and receive freely, reducing waste and building community.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="dashboard.html" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="my-groups.html" class="text-white text-decoration-none">My Groups</a></li>
+                        <li class="mb-2"><a href="messages.html" class="text-white text-decoration-none">Messages</a></li>
+                        <li class="mb-2"><a href="saved-posts.html" class="text-white text-decoration-none">Saved Posts</a></li>
+                        <li><a href="rules.html" class="text-white text-decoration-none">Rules</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5 class="mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                        <li class="mb-2"><a href="volunteer.html" class="text-white text-decoration-none">Volunteer</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Community Events</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Local Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-3">Stay Connected</h5>
+                    <p>Subscribe to our newsletter for updates and news.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email" aria-label="Your email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                    <p class="mb-0"><i class="fas fa-phone me-2"></i> Customer Service: +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope me-2"></i> support@buynothing.org</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2023 Buy Nothing Project. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none me-3">Terms of Service</a>
+                    <a href="#" class="text-white text-decoration-none">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove saved post functionality
+            document.querySelectorAll('.dropdown-item.text-danger').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (confirm('Are you sure you want to remove this post from your saved items?')) {
+                        // Get the card element
+                        const card = this.closest('.card');
+                        
+                        // Add fade-out animation
+                        card.style.transition = 'opacity 0.3s ease';
+                        card.style.opacity = '0';
+                        
+                        // Remove the card after animation completes
+                        setTimeout(() => {
+                            card.closest('.col-md-6').remove();
+                            
+                            // Check if there are any saved posts left in the current tab
+                            const activeTab = document.querySelector('.tab-pane.active');
+                            if (activeTab && activeTab.querySelectorAll('.card').length === 0) {
+                                document.getElementById('noSavedPosts').classList.remove('d-none');
+                            }
+                        }, 300);
+                    }
+                });
+            });
+            
+            // Tab change event
+            const tabEls = document.querySelectorAll('button[data-bs-toggle="tab"]');
+            tabEls.forEach(tabEl => {
+                tabEl.addEventListener('shown.bs.tab', function (event) {
+                    const targetTab = document.querySelector(event.target.getAttribute('data-bs-target'));
+                    const hasCards = targetTab.querySelectorAll('.card').length > 0;
+                    
+                    if (!hasCards) {
+                        document.getElementById('noSavedPosts').classList.remove('d-none');
+                    } else {
+                        document.getElementById('noSavedPosts').classList.add('d-none');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

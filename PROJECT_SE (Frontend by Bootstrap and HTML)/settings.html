@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings - Buy Nothing</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">
+                <img src="images/logo.png" alt="Buy Nothing Logo" height="40">
+                <span class="ms-2 fw-bold text-primary">Buy Nothing</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="my-groups.html">My Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="messages.html">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="saved-posts.html">Saved</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rules.html">Rules</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown me-3">
+                        <button class="btn btn-link text-dark position-relative p-0" type="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bell fa-lg"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown" style="width: 300px;">
+                            <li><h6 class="dropdown-header">Notifications</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center py-2" href="#">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <p class="mb-0"><strong>Sarah</strong> commented on your post</p>
+                                        <small class="text-muted">2 hours ago</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center py-2" href="#">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <p class="mb-0"><strong>Ahmed</strong> is interested in your item</p>
+                                        <small class="text-muted">5 hours ago</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center py-2" href="#">
+                                    <div class="bg-primary text-white rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <p class="mb-0">You were added to <strong>Downtown Group</strong></p>
+                                        <small class="text-muted">1 day ago</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-center" href="#">See all notifications</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-link p-0 text-dark dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Profile Picture">
+                            <span class="d-none d-md-inline">John Doe</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> My Profile</a></li>
+                            <li><a class="dropdown-item active" href="settings.html"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Settings Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 mb-4">
+                    <!-- Settings Navigation -->
+                    <div class="card border-0 shadow-sm sticky-lg-top" style="top: 100px;">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Settings</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <nav class="nav flex-column">
+                                <a class="nav-link active" href="#account-settings">Account Settings</a>
+                                <a class="nav-link" href="#profile-settings">Profile Settings</a>
+                                <a class="nav-link" href="#notification-settings">Notification Settings</a>
+                                <a class="nav-link" href="#privacy-settings">Privacy Settings</a>
+                                <a class="nav-link" href="#language-settings">Language & Region</a>
+                                <a class="nav-link" href="#connected-accounts">Connected Accounts</a>
+                                <a class="nav-link text-danger" href="#delete-account">Delete Account</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <!-- Account Settings -->
+                    <div id="account-settings" class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Account Settings</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="accountSettingsForm">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" value="john.doe@example.com">
+                                    <div class="form-text">This email is used for login and notifications.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" value="+1 (555) 123-4567">
+                                    <div class="form-text">Used for account recovery and optional notifications.</div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="username" value="johndoe">
+                                    <div class="form-text">Your unique username on the platform.</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Password Change -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Change Password</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="passwordChangeForm">
+                                <div class="mb-3">
+                                    <label for="currentPassword" class="form-label">Current Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="currentPassword">
+                                        <button class="btn btn-outline-secondary" type="button" id="toggleCurrentPassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newPassword" class="form-label">New Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="newPassword">
+                                        <button class="btn btn-outline-secondary" type="button" id="toggleNewPassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="form-text">Password must be at least 8 characters and include a mix of letters, numbers, and symbols.</div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="confirmPassword">
+                                        <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Password</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Profile Settings -->
+                    <div id="profile-settings" class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Profile Settings</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="profileSettingsForm">
+                                <div class="mb-4">
+                                    <label class="form-label">Profile Picture</label>
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://via.placeholder.com/100" class="rounded-circle me-3" alt="Profile Picture">
+                                        <div>
+                                            <button type="button" class="btn btn-outline-primary mb-2">
+                                                <i class="fas fa-upload me-2"></i> Upload New Picture
+                                            </button>
+                                            <input type="file" id="profilePicture" class="d-none" accept="image/*">
+                                            <div>
+                                                <button type="button" class="btn btn-link text-danger p-0">
+                                                    <i class="fas fa-trash-alt me-1"></i> Remove Picture
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" value="John">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" value="Doe">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bio" class="form-label">Bio</label>
+                                    <textarea class="form-control" id="bio" rows="3">I'm passionate about reducing waste and building community connections. Love gardening and DIY projects!</textarea>
+                                    <div class="form-text">Tell others a bit about yourself (max 200 characters).</div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="interests" class="form-label">Interests</label>
+                                    <select class="form-select" id="interests" multiple>
+                                        <option selected>Gardening</option>
+                                        <option selected>DIY</option>
+                                        <option>Books</option>
+                                        <option>Cooking</option>
+                                        <option>Sports</option>
+                                        <option>Art</option>
+                                        <option>Technology</option>
+                                        <option>Music</option>
+                                        <option>Fashion</option>
+                                        <option>Home Decor</option>
+                                    </select>
+                                    <div class="form-text">Select interests to help others know what items you might like.</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Notification Settings -->
+                    <div id="notification-settings" class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Notification Settings</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="notificationSettingsForm">
+                                <h6 class="mb-3">Email Notifications</h6>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="emailNewMessages" checked>
+                                    <label class="form-check-label" for="emailNewMessages">New messages</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="emailPostComments" checked>
+                                    <label class="form-check-label" for="emailPostComments">Comments on my posts</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="emailPostInterest" checked>
+                                    <label class="form-check-label" for="emailPostInterest">Interest in my items</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="emailGroupUpdates">
+                                    <label class="form-check-label" for="emailGroupUpdates">Group updates and announcements</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="emailNewsletter">
+                                    <label class="form-check-label" for="emailNewsletter">Buy Nothing newsletter</label>
+                                </div>
+                                
+                                <hr class="my-4">
+                                
+                                <h6 class="mb-3">In-App Notifications</h6>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="appNewMessages" checked>
+                                    <label class="form-check-label" for="appNewMessages">New messages</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="appPostComments" checked>
+                                    <label class="form-check-label" for="appPostComments">Comments on my posts</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="appPostInterest" checked>
+                                    <label class="form-check-label" for="appPostInterest">Interest in my items</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="appGroupUpdates" checked>
+                                    <label class="form-check-label" for="appGroupUpdates">Group updates and announcements</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="appNewItemsNearby" checked>
+                                    <label class="form-check-label" for="appNewItemsNearby">New items in my groups</label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Privacy Settings -->
+                    <div id="privacy-settings" class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Privacy Settings</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="privacySettingsForm">
+                                <h6 class="mb-3">Profile Visibility</h6>
+                                <div class="mb-3">
+                                    <label for="profileVisibility" class="form-label">Who can see my profile?</label>
+                                    <select class="form-select" id="profileVisibility">
+                                        <option value="everyone" selected>Everyone</option>
+                                        <option value="groupMembers">Only members of my groups</option>
+                                        <option value="connections">Only people I've interacted with</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="locationVisibility" class="form-label">Location visibility</label>
+                                    <select class="form-select" id="locationVisibility">
+                                        <option value="approximate" selected>Show approximate location (neighborhood level)</option>
+                                        <option value="general">Show general area only (city level)</option>
+                                        <option value="hidden">Don't show my location</option>
+                                    </select>
+                                </div>
+                                
+                                <hr class="my-4">
+                                
+                                <h6 class="mb-3">Activity Privacy</h6>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="showOnlineStatus" checked>
+                                    <label class="form-check-label" for="showOnlineStatus">Show when I'm online</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="showReadReceipts" checked>
+                                    <label class="form-check-label" for="showReadReceipts">Show read receipts in messages</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="showActivityStatus" checked>
+                                    <label class="form-check-label" for="showActivityStatus">Show my activity status</label>
+                                </div>
+                                
+                                <hr class="my-4">
+                                
+                                <h6 class="mb-3">Data Usage</h6>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="allowDataAnalytics" checked>
+                                    <label class="form-check-label" for="allowDataAnalytics">Allow anonymous data collection to improve the platform</label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="allowPersonalization" checked>
+                                    <label class="form-check-label" for="allowPersonalization">Allow personalization based on my activity</label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Language & Region -->
+                    <div id="language-settings" class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Language & Region</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="languageSettingsForm">
+                                <div class="mb-3">
+                                    <label for="language" class="form-label">Language</label>
+                                    <select class="form-select" id="language">
+                                        <option value="en" selected>English</option>
+                                        <option value="ar">العربية (Arabic)</option>
+                                        <option value="es">Español (Spanish)</option>
+                                        <option value="fr">Français (French)</option>
+                                        <option value="de">Deutsch (German)</option>
+                                        <option value="zh">中文 (Chinese)</option>
+                                        <option value="ja">日本語 (Japanese)</option>
+                                        <option value="ko">한국어 (Korean)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="region" class="form-label">Region</label>
+                                    <select class="form-select" id="region">
+                                        <option value="us" selected>United States</option>
+                                        <option value="eg">Egypt</option>
+                                        <option value="ca">Canada</option>
+                                        <option value="uk">United Kingdom</option>
+                                        <option value="au">Australia</option>
+                                        <option value="in">India</option>
+                                        <option value="jp">Japan</option>
+                                        <option value="br">Brazil</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="timezone" class="form-label">Time Zone</label>
+                                    <select class="form-select" id="timezone">
+                                        <option value="GMT-8">Pacific Time (GMT-8)</option>
+                                        <option value="GMT-7">Mountain Time (GMT-7)</option>
+                                        <option value="GMT-6">Central Time (GMT-6)</option>
+                                        <option value="GMT-5">Eastern Time (GMT-5)</option>
+                                        <option value="GMT+0">Greenwich Mean Time (GMT+0)</option>
+                                        <option value="GMT+1">Central European Time (GMT+1)</option>
+                                        <option value="GMT+2" selected>Eastern European Time (GMT+2)</option>
+                                        <option value="GMT+3">Moscow Time (GMT+3)</option>
+                                        <option value="GMT+5:30">India Standard Time (GMT+5:30)</option>
+                                        <option value="GMT+8">China Standard Time (GMT+8)</option>
+                                        <option value="GMT+9">Japan Standard Time (GMT+9)</option>
+                                        <option value="GMT+10">Australian Eastern Time (GMT+10)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="dateFormat" class="form-label">Date Format</label>
+                                    <select class="form-select" id="dateFormat">
+                                        <option value="mdy" selected>MM/DD/YYYY</option>
+                                        <option value="dmy">DD/MM/YYYY</option>
+                                        <option value="ymd">YYYY/MM/DD</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="distanceUnit" class="form-label">Distance Unit</label>
+                                    <select class="form-select" id="distanceUnit">
+                                        <option value="km" selected>Kilometers</option>
+                                        <option value="mi">Miles</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Connected Accounts -->
+                    <div id="connected-accounts" class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Connected Accounts</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted mb-4">Connect your social accounts for easier login and sharing.</p>
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-3 p-3 border rounded">
+                                <div class="d-flex align-items-center">
+                                    <i class="fab fa-google fa-2x text-danger me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0">Google</h6>
+                                        <p class="mb-0 text-muted">Connected as john.doe@gmail.com</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-danger btn-sm">Disconnect</button>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-3 p-3 border rounded">
+                                <div class="d-flex align-items-center">
+                                    <i class="fab fa-facebook fa-2x text-primary me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0">Facebook</h6>
+                                        <p class="mb-0 text-muted">Not connected</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-primary btn-sm">Connect</button>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-3 p-3 border rounded">
+                                <div class="d-flex align-items-center">
+                                    <i class="fab fa-twitter fa-2x text-info me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0">Twitter</h6>
+                                        <p class="mb-0 text-muted">Not connected</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-info btn-sm">Connect</button>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center p-3 border rounded">
+                                <div class="d-flex align-items-center">
+                                    <i class="fab fa-apple fa-2x me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0">Apple</h6>
+                                        <p class="mb-0 text-muted">Not connected</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-dark btn-sm">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Delete Account -->
+                    <div id="delete-account" class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0 text-danger">Delete Account</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                <strong>Warning:</strong> Deleting your account is permanent and cannot be undone. All your data, including posts, messages, and profile information will be permanently removed.
+                            </div>
+                            
+                            <p>Before you delete your account, please consider:</p>
+                            <ul>
+                                <li>You can temporarily deactivate your account instead</li>
+                                <li>You will lose all connections and group memberships</li>
+                                <li>Any ongoing exchanges will be disrupted</li>
+                                <li>You'll need to create a new account if you want to rejoin</li>
+                            </ul>
+                            
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="confirmDelete">
+                                <label class="form-check-label" for="confirmDelete">
+                                    I understand that deleting my account is permanent and cannot be undone
+                                </label>
+                            </div>
+                            
+                            <button type="button" class="btn btn-danger" id="deleteAccount

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Up Your Profile - Buy Nothing</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Buy Nothing Logo" height="40">
+                <span class="ms-2 fw-bold text-primary">Buy Nothing</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="groups.html">Find Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rules.html">Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="customer-service.html">Help</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <div class="dropdown me-2">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-globe"></i> English
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item active" href="#">English</a></li>
+                            <li><a class="dropdown-item" href="#">العربية</a></li>
+                            <li><a class="dropdown-item" href="#">Español</a></li>
+                            <li><a class="dropdown-item" href="#">Français</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Setup Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4 p-md-5">
+                            <div class="text-center mb-4">
+                                <h2>Set Up Your Profile</h2>
+                                <p class="text-muted">Complete your profile to join your local Buy Nothing community</p>
+                            </div>
+                            
+                            <!-- Progress Bar -->
+                            <div class="progress mb-5" style="height: 10px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            
+                            <!-- Step Indicators -->
+                            <div class="d-flex justify-content-between mb-5">
+                                <div class="text-center">
+                                    <div class="step-circle active">1</div>
+                                    <div class="step-label">Profile Info</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="step-circle">2</div>
+                                    <div class="step-label">Set Location</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="step-circle">3</div>
+                                    <div class="step-label">Interests</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 1: Profile Information -->
+                            <div id="step1" class="setup-step active">
+                                <form id="profileInfoForm">
+                                    <div class="text-center mb-4">
+                                        <div class="profile-pic-wrapper mx-auto">
+                                            <div class="profile-pic">
+                                                <img src="https://via.placeholder.com/150" class="rounded-circle" alt="Profile Picture">
+                                                <div class="profile-pic-edit">
+                                                    <label for="profilePicInput" class="btn btn-sm btn-primary rounded-circle">
+                                                        <i class="fas fa-camera"></i>
+                                                    </label>
+                                                    <input type="file" id="profilePicInput" accept="image/*" style="display: none;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="text-muted small mt-2">Upload a profile picture (optional)</p>
+                                    </div>
+                                    
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="displayName" class="form-label">Display Name</label>
+                                            <input type="text" class="form-control" id="displayName" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="phoneNumber" class="form-label">Phone Number (optional)</label>
+                                            <input type="tel" class="form-control" id="phoneNumber">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="bio" class="form-label">Bio (optional)</label>
+                                            <textarea class="form-control" id="bio" rows="3" placeholder="Tell your neighbors a bit about yourself..."></textarea>
+                                        </div>
+                                        <div class="col-12 mt-4">
+                                            <button type="button" class="btn btn-primary w-100 py-2" id="nextToStep2">Continue</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- Step 2: Set Location -->
+                            <div id="step2" class="setup-step">
+                                <h4 class="mb-3">Set Your Location</h4>
+                                <p class="text-muted mb-4">Your location helps us connect you with your local Buy Nothing group. Your exact address is never shared publicly.</p>
+                                
+                                <div class="mb-3">
+                                    <label for="locationSearch" class="form-label">Search for your location</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="locationSearch" placeholder="Enter your address or neighborhood">
+                                        <button class="btn btn-outline-secondary" type="button" id="searchLocation">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div id="map" class="rounded mb-4" style="height: 300px;"></div>
+                                
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle me-2"></i> Drag the marker to adjust your exact location
+                                </div>
+                                
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button type="button" class="btn btn-outline-secondary" id="backToStep1">Back</button>
+                                    <button type="button" class="btn btn-primary" id="nextToStep3">Continue</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3: Interests -->
+                            <div id="step3" class="setup-step">
+                                <h4 class="mb-3">Select Your Interests</h4>
+                                <p class="text-muted mb-4">Choose categories you're interested in to help us show you relevant posts.</p>
+                                
+                                <div class="row g-3">
+                                    <div class="col-md-4 col-6">
+                                        <div class="form-check custom-checkbox">
+                                            <input class="form-check-input" type="checkbox" id="clothing">
+                                            <label class="form-check-label" for="clothing">
+                                                <i class="fas fa-tshirt me-2"></i> Clothing
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="form-check custom-checkbox">
+                                            <input class="form-check-input" type="checkbox" id="furniture">
+                                            <label class="form-check-label" for="furniture">
+                                                <i class="fas fa-couch me-2"></i> Furniture
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="form-check custom-checkbox">
+                                            <input class="form-check-input" type="checkbox" id="electronics">
+                                            <label class="form-check-label" for="electronics">
+                                                <i class="fas fa-laptop me-2"></i> Electronics
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="form-check custom-checkbox">
+                                            <input class="form-check-input" type="checkbox" id="toys">
+                                            <label class="form-check-label" for="toys">
+                                                <i class="fas fa-gamepad me-2"></i> Toys & Games
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="form-check custom-checkbox">
+                                            <input class="form-check-input" type="checkbox" id="books">
+                                            <label class="form-check-label" for="books">
+                                                <i class="fas fa-book me-2"></i> Books
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="form-check custom-checkbox">
+                                            <input class="form-check-input" type="checkbox" id="kitchen">
+                                            <label class="form-check-label" for="kitchen">
+                                                <i class="fas fa-utensils me-2"></i> Kitchen Items
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="form-check custom-checkbox">
+                                            <input class="form-check-input" type="checkbox" id="garden">
+                                            <label class="form-check-label" for="garden">
+                                                <i class="fas fa-leaf me-2"></i> Garden & Plants
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="form-check custom-checkbox">
+                                            <input class="form-check-input" type="checkbox" id="sports">
+                                            <label class="form-check-label" for="sports">
+                                                <i class="fas fa-basketball-ball me-2"></i> Sports Equipment
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-6">
+                                        <div class="form-check custom-checkbox">
+                                            <input class="form-check-input" type="checkbox" id="services">
+                                            <label class="form-check-label" for="services">
+                                                <i class="fas fa-hands-helping me-2"></i> Services
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button type="button" class="btn btn-outline-secondary" id="backToStep2">Back</button>
+                                    <button type="button" class="btn btn-primary" id="completeSetup">Complete Setup</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Buy Nothing</h5>
+                    <p class="mb-3">A global movement where people give and receive freely, reducing waste and building community.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="groups.html" class="text-white text-decoration-none">Find Groups</a></li>
+                        <li class="mb-2"><a href="rules.html" class="text-white text-decoration-none">Rules</a></li>
+                        <li><a href="customer-service.html" class="text-white text-decoration-none">Help</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5 class="mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Volunteer</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Community Events</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Local Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-3">Stay Connected</h5>
+                    <p>Subscribe to our newsletter for updates and news.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email" aria-label="Your email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                    <p class="mb-0"><i class="fas fa-phone me-2"></i> Customer Service: +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope me-2"></i> support@buynothing.org</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2023 Buy Nothing Project. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none me-3">Terms of Service</a>
+                    <a href="#" class="text-white text-decoration-none">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/maps.js"></script>
+    <script>
+        // Profile setup navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Step navigation
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const step3 = document.getElementById('step3');
+            
+            // Buttons
+            const nextToStep2 = document.getElementById('nextToStep2');
+            const backToStep1 = document.getElementById('backToStep1');
+            const nextToStep3 = document.getElementById('nextToStep3');
+            const backToStep2 = document.getElementById('backToStep2');
+            const completeSetup = document.getElementById('completeSetup');
+            
+            // Step circles
+            const stepCircles = document.querySelectorAll('.step-circle');
+            
+            // Progress bar
+            const progressBar = document.querySelector('.progress-bar');
+            
+            // Step 1 to Step 2
+            nextToStep2.addEventListener('click', function() {
+                step1.classList.remove('active');
+                step2.classList.add('active');
+                stepCircles[0].classList.remove('active');
+                stepCircles[1].classList.add('active');
+                progressBar.style.width = '66%';
+                
+                // Initialize map
+                initMap();
+            });
+            
+            // Step 2 to Step 1
+            backToStep1.addEventListener('click', function() {
+                step2.classList.remove('active');
+                step1.classList.add('active');
+                stepCircles[1].classList.remove('active');
+                stepCircles[0].classList.add('active');
+                progressBar.style.width = '33%';
+            });
+            
+            // Step 2 to Step 3
+            nextToStep3.addEventListener('click', function() {
+                step2.classList.remove('active');
+                step3.classList.add('active');
+                stepCircles[1].classList.remove('active');
+                stepCircles[2].classList.add('active');
+                progressBar.style.width = '100%';
+            });
+            
+            // Step 3 to Step 2
+            backToStep2.addEventListener('click', function() {
+                step3.classList.remove('active');
+                step2.classList.add('active');
+                stepCircles[2].classList.remove('active');
+                stepCircles[1].classList.add('active');
+                progressBar.style.width = '66%';
+            });
+            
+            // Complete setup
+            completeSetup.addEventListener('click', function() {
+                window.location.href = 'dashboard.html';
+            });
+            
+            // Profile picture upload preview
+            const profilePicInput = document.getElementById('profilePicInput');
+            const profilePic = document.querySelector('.profile-pic img');
+            
+            profilePicInput.addEventListener('change', function(e) {
+                if (e.target.files.length > 0) {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        profilePic.src = e.target.result;
+                    }
+                    
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Map initialization function
+            function initMap() {
+                if (typeof L !== 'undefined' && document.getElementById('map')) {
+                    const map = L.map('map').setView([30.0444, 31.2357], 13); // Default to Cairo
+                    
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+                    
+                    // Add a draggable marker
+                    const marker = L.marker([30.0444, 31.2357], {
+                        draggable: true
+                    }).addTo(map);
+                    
+                    // Search location button
+                    document.getElementById('searchLocation').addEventListener('click', function() {
+                        const searchInput = document.getElementById('locationSearch').value;
+                        // In a real app, you would use a geocoding service here
+                        alert('Searching for: ' + searchInput);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
